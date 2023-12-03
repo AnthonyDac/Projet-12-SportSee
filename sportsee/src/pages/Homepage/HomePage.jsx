@@ -8,11 +8,11 @@ function HomePage() {
   return (
     <>
       <NavbarComponent />
-      <section class="homepage">
-        <div class="left-navigation">
+      <section className="homepage">
+        <div className="left-navigation">
           <NavbarleftComponent />
         </div>
-        <div class="dashboard">
+        <div className="dashboard">
           <DashboardComponent />
         </div>
       </section>

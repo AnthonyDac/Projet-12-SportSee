@@ -21,3 +21,36 @@
   letter-spacing: 0px;
   text-align: left;
 }
+
+.barChartContainer {
+  width: fit-content;
+  max-height: 320px;
+  background: #fbfbfb;
+  border-radius: 10px;
+  padding: 20px 20px;
+}
+
+.dashboardCards {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+
+.keyDataContainer {
+  width: fit-content;
+}
+
+.dashboardSquaresContainer {
+  display: flex;
+  margin-top: 50px;
+  gap: 30px;
+}
+
+.recharts-wrapper {
+  border-radius: 10px;
+}

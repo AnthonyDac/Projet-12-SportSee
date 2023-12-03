@@ -1,0 +1,80 @@
+/* Définissez la police "Roboto" pour tous les éléments du graphique */
+.custom-chart {
+  font-family: "Roboto", sans-serif;
+}
+
+.recharts-cartesian-axis-tick-line {
+  display: none;
+}
+
+tspan {
+  font-family: "Roboto";
+}
+
+.recharts-xAxis {
+  transform: translateY(10px);
+}
+
+.barchartTitle {
+  width: 90%;
+  margin: 0 auto 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-tooltip-activity {
+  background: rgba(230, 0, 0, 1);
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  padding: 15px 8px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.barchartTitle h2 {
+  font-family: "Roboto";
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.barchartTitleLegend {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  display: flex;
+  gap: 10px;
+}
+
+.barchartTitleLegendElement {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.barchartTitleLegendElementCircleKilogram {
+  background: #282d30;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.barchartTitleLegendElementCircleCalories {
+  background: #ff0101;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}

@@ -1,0 +1,78 @@
+.keyDataContainerElement {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  width: 100%;
+  margin: 0 0 1.5rem 0;
+  padding: 30px 50px;
+  border-radius: 0.5rem;
+  background-color: rgba(251, 251, 251, 1);
+}
+
+.keyDataContainerElementIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background: rgba(74, 184, 255, 0.1);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyDataContainerElementTitle {
+}
+
+.keyDataContainerElementTitle p:first-child {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: rgba(40, 45, 48, 1);
+}
+
+.keyDataContainerElementTitle p:last-child {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: rgba(116, 121, 140, 1);
+}
+
+.calorie {
+  background: rgba(255, 0, 0, 0.1);
+}
+
+.calorie i {
+  color: #f40000;
+}
+
+.protein {
+  background: rgba(74, 184, 255, 0.1);
+}
+
+.protein i {
+  color: rgba(74, 184, 255, 1);
+}
+
+.carbohydrate {
+  background: rgba(249, 206, 35, 0.1);
+}
+
+.carbohydrate i {
+  color: rgba(253, 204, 12, 1);
+}
+
+.lipid {
+  background: rgba(253, 81, 129, 0.1);
+}
+
+.lipid i {
+  color: rgba(253, 81, 129, 1);
+}

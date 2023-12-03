@@ -7,7 +7,7 @@ function NavbarleftComponent() {
 
     return (
         <>
-            <div class="leftNavigation">
+            <div className="leftNavigation">
                 <ul>
                     <li><img src="/src/assets/icon-yoga.png"></img></li>
                     <li><img src="/src/assets/icon-natation.png"></img></li>

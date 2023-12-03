@@ -1,0 +1,37 @@
+.recharts-cartesian-axis-line {
+  display: none;
+}
+
+.custom-tooltip-sessions {
+  background: rgba(255, 255, 255, 1);
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  padding: 10px 15px;
+}
+
+.averageSessionsContainer {
+  width: fit-content;
+  background: #ff0000;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.averageSessionsContainerTitle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  max-width: 145px;
+  z-index: 5;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.2);
+}

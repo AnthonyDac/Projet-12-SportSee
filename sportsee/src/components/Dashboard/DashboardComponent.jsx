@@ -88,9 +88,11 @@ function NavbarComponent() {
             <div className="dashboardCards">
                 <div className="barChartContainer">
                     <BarchartComponenent data={data} />
-                    <div class="dashboardSquaresContainer">
+                    <div className="dashboardSquaresContainer">
                         <AverageSessionsComponent datas={userSessions} />
-                        <RadarchartComponent data={userPerformance} />
+                        <div className="dashboardSquaresContainerElement">
+                            <RadarchartComponent data={userPerformance} />
+                        </div>
                         <ScoreComponent dataScore={userData.score ? userData.score : userData.todayScore} />
                     </div>
 

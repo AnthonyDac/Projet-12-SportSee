@@ -1,6 +1,6 @@
 import React from 'react';
 import './AverageSessionsComponent.css';
-import { LineChart, Line, XAxis, Tooltip, Legend, Text } from 'recharts';
+import { LineChart, Line, XAxis, Tooltip, Legend, Text, ReferenceArea } from 'recharts';
 
 function AverageSessionsComponent({ datas }) {
     // Formatter pour afficher les lettres correspondant aux jours de la semaine
@@ -28,11 +28,22 @@ function AverageSessionsComponent({ datas }) {
             <div className="averageSessionsContainerTitle">
                 <p>Durée moyenne des sessions</p>
             </div>
-            <LineChart width={260} height={260} data={datas.sessions} margin={{ top: 80, right: 10, left: 10, bottom: 15 }} style={chartStyle}>
-                <XAxis dataKey="day" tickFormatter={dayFormatter} />
+            <LineChart width={260} height={260} data={datas.sessions} margin={{ top: 80, right: 15, left: 15, bottom: 30 }} style={chartStyle}>
+                <XAxis dataKey="day" tickFormatter={dayFormatter} tick={{ fill: "rgba(255, 255, 255, 0.5)", fontSize: 15 }} dy={10} />
                 <Tooltip content={<CustomTooltip />} />
-                <Tooltip content={<CustomTooltip />} position={{ y: 0 }} />
-                <Line type="natural" dataKey="sessionLength" stroke="#8884d8" dot={false} />
+                <ReferenceArea x1={'S'} x2={'D'} y1={60} y2={60} stroke="green" strokeOpacity={1} />
+                <Line
+                    type="natural"
+                    dataKey="sessionLength"
+                    dot={false}
+                    stroke="url(#gradient)"
+                />
+                <defs>
+                    <linearGradient id="gradient" x1="1" y1="0" x2="0" y2="0">
+                        <stop offset="50%" stopColor="#FFFFFF" stopOpacity={0.5} />
+                        <stop offset="100%" stopColor="#FFFFFF" stopOpacity={0} />
+                    </linearGradient>
+                </defs>
             </LineChart>
         </div>
     );

@@ -23,14 +23,13 @@ function ScoreComponent({ dataScore }) {
             <div className="scoreContainerTitle">
                 <p>Score</p>
             </div>
-            <div class="scoreContainerScore">
-                <div class="scoreDisplayer">
-                    <span class="percent">{scorePercent}%</span><span class="text">de votre objectif</span>
+            <div className="scoreContainerScore">
+                <div className="scoreDisplayer">
+                    <span className="percent">{scorePercent}%</span><span className="text">de votre objectif</span>
                 </div>
             </div>
-            <RadialBarChart width={260} height={260} cx="50%" cy="50%" innerRadius={90} outerRadius={120} barSize={7} data={[{ name: 'Score', value: scorePercent }]} startAngle={0} fill='#FF0000' endAngle={(360 * scorePercent) / 100}>
+            <RadialBarChart width={260} height={260} cx="50%" cy="50%" innerRadius={90} outerRadius={170} barSize={8} data={[{ name: 'Score', value: scorePercent }]} startAngle={0} fill='#FF0000' endAngle={(360 * scorePercent) / 100}>
                 <RadialBar minAngle={0} background clockWise={true} dataKey='value' fill='#FF0000' />
-
             </RadialBarChart>
 
 

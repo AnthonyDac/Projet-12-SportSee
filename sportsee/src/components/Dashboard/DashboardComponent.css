@@ -32,7 +32,7 @@
 
 .dashboardCards {
   width: 100%;
-  height: fit-content;
+  height: 750px;
   display: flex;
   gap: 30px;
   justify-content: space-between;
@@ -53,4 +53,30 @@
 
 .recharts-wrapper {
   border-radius: 10px;
+}
+
+.dashboardSquaresContainerElement {
+  width: 260px;
+  height: 260px;
+  background: #282d30;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1025px) {
+  .dashboardCards {
+    height: auto;
+    flex-direction: column;
+    gap: 0 !important;
+    padding-bottom: 50px;
+  }
+
+  .keyDataContainer {
+    display: flex;
+    flex-wrap: wrap;
+    order: -1;
+    gap: 10px;
+  }
 }

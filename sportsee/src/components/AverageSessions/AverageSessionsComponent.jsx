@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AverageSessionsComponent.css';
 import { LineChart, Line, XAxis, Tooltip, Legend, Text, ReferenceArea } from 'recharts';
 
@@ -21,10 +21,11 @@ function AverageSessionsComponent({ datas }) {
         return null;
     }
 
-    const chartStyle = { background: 'red' };
+    const chartStyle = { background: 'transparent' };
 
     return (
         <div className="averageSessionsContainer">
+            <div className="backgroundLine"></div>
             <div className="averageSessionsContainerTitle">
                 <p>Durée moyenne des sessions</p>
             </div>

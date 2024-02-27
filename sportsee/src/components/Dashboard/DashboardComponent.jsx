@@ -5,84 +5,64 @@ import CardsDataComponent from '../CardsData/CardsDataComponent';
 import AverageSessionsComponent from '../AverageSessions/AverageSessionsComponent';
 import ScoreComponent from '../Score/ScoreComponent';
 import RadarchartComponent from '../RadarChart/RadarchartComponent';
+import { getUserInfo, getActivityData, getAverageSessionsData, getPerformancesData } from '../../service/apiService';
 
-function NavbarComponent() {
-    // Données
+function DashboardComponent() {
     const initialData = [
         { name: 'Janvier', kilogram: 69, calories: 70 },
     ];
 
     const [data, setDataActivity] = useState(initialData);
-    const [userData, setUserInfos] = useState({ firstName: 'Utilisateur' }); // Valeur par défaut
-    const [userSessions, setUserSessions] = useState({ sessions: [{ day: 1, sessionLength: 30 }] }); // Valeur par défaut
-    const [userPerformance, setUserPerformance] = useState({ sessions: [{ day: 1, sessionLength: 30 }] }); // Valeur par défaut
+    const [userData, setUserInfos] = useState({ firstName: 'Utilisateur' });
+    const [userSessions, setUserSessions] = useState({ sessions: [] });
+    const [userPerformance, setUserPerformance] = useState({ data: [] });
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        async function getUser() {
-            // Récupérer l'id de l'utilisateur en paramètre d'URL
-            const url = window.location.href;
-            const urlSplit = url.split("/");
-            const userId = urlSplit[4];
-            // Récupérer les données de l'utilisateur
-            const response = await fetch(`http://localhost:3000/user/${userId}`);
-            const userData = await response.json();
-            setUserInfos(userData.data);
-        }
+        async function fetchDataForUser(userId) {
+            try {
+                const userInfo = await getUserInfo(userId);
+                const activityData = await getActivityData(userId);
+                const avgSessionsData = await getAverageSessionsData(userId);
+                const performancesData = await getPerformancesData(userId);
 
-        async function getActivityOfUser() {
-            // Récupérer l'id de l'utilisateur en paramètre d'URL
-            const url = window.location.href;
-            const urlSplit = url.split("/");
-            const userId = urlSplit[4];
-            // Récupérer les données de l'utilisateur
-            const response = await fetch(`http://localhost:3000/user/${userId}/activity`);
-            const userData = await response.json();
-            const sessions = userData.data.sessions;
-            const sessionsFiltered = sessions.map((session, index) => {
-                return {
-                    name: index + 1,
-                    kilogram: session.kilogram,
-                    calories: session.calories,
+                setUserInfos(userInfo);
+
+                if (activityData && activityData.sessions) {
+                    const sessionsFiltered = activityData.sessions.map((session, index) => ({
+                        name: index + 1,
+                        kilogram: session.kilogram,
+                        calories: session.calories,
+                    }));
+                    setDataActivity(sessionsFiltered);
                 }
-            })
-            setDataActivity(sessionsFiltered);
+
+                setUserSessions(avgSessionsData);
+                setUserPerformance(performancesData);
+
+            } catch (error) {
+                console.error('Erreur lors de la récupération des données :', error);
+            } finally {
+                setLoading(false);
+            }
         }
 
-        async function getAverangeSessionsOfUser() {
-            // Récupérer l'id de l'utilisateur en paramètre d'URL
-            const url = window.location.href;
-            const urlSplit = url.split("/");
-            const userId = urlSplit[4];
-            // Récupérer les données de l'utilisateur
-            const response = await fetch(`http://localhost:3000/user/${userId}/average-sessions`);
-            const userData = await response.json();
-            const sessions = userData.data;
-            setUserSessions(sessions);
-        }
+        const url = window.location.href;
+        const urlSplit = url.split("/");
+        const userId = urlSplit[4];
 
-        async function getPerformancesOfUser() {
-            // Récupérer l'id de l'utilisateur en paramètre d'URL
-            const url = window.location.href;
-            const urlSplit = url.split("/");
-            const userId = urlSplit[4];
-            // Récupérer les données de l'utilisateur
-            const response = await fetch(`http://localhost:3000/user/${userId}/performance`);
-            const userData = await response.json();
-            const performances = userData.data;
-            setUserPerformance(performances);
-        }
+        fetchDataForUser(userId);
+    }, []);
 
-
-        getPerformancesOfUser();
-        getAverangeSessionsOfUser();
-        getActivityOfUser();
-        getUser();
-    }, []); // Le tableau vide signifie que cela ne s'exécutera qu'une fois après le montage initial.
+    // Vérifier si les données nécessaires sont présentes avant de rendre le JSX
+    if (loading) {
+        return <p className='errorMessage'>Chargement...</p>;
+    }
 
     return (
-        <>
+        userData && data && userSessions && userPerformance ? (<>
             <div className="dashboardTitle">
-                <h1>Bonjour <span>{userData.userInfos && userData.userInfos.firstName}</span></h1>
+                <h1>Bonjour <span>{userData.userInfos.firstName}</span></h1>
                 <p>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
             </div>
             <div className="dashboardCards">
@@ -95,14 +75,13 @@ function NavbarComponent() {
                         </div>
                         <ScoreComponent dataScore={userData.score ? userData.score : userData.todayScore} />
                     </div>
-
                 </div>
                 <div className="keyDataContainer">
                     <CardsDataComponent data={userData} />
                 </div>
             </div>
-        </>
+        </>) : <p className='errorMessage'>Erreur de chargement des données utilisateur..</p>
     );
 }
 
-export default NavbarComponent;
+export default DashboardComponent;

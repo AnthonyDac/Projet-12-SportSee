@@ -1,6 +1,6 @@
 {
   "userInfos": {
-    "id": 13,
+    "id": 12,
     "userInfos": {
       "firstName": "Julie",
       "lastName": "Dupont",
@@ -15,7 +15,7 @@
     }
   },
   "userActivity": {
-    "userId": 13,
+    "userId": 12,
     "sessions": [
       {
         "day": "2023-11-01",
@@ -55,7 +55,7 @@
     ]
   },
   "userSessions": {
-    "userId": 13,
+    "userId": 12,
     "sessions": [
       {
         "day": 1,
@@ -88,7 +88,7 @@
     ]
   },
   "userPerformance": {
-    "userId": 13,
+    "userId": 12,
     "kind": {
       "1": "cardio",
       "2": "energy",

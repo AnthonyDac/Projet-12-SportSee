@@ -78,6 +78,27 @@
   color: rgba(253, 81, 129, 1);
 }
 
+@media (max-width: 1440px) {
+  .keyDataContainerElement {
+    max-width: 100%;
+    max-height: 100%;
+    padding: 20px 30px;
+  }
+
+  .keyDataContainerElementIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .keyDataContainerElementTitle p:first-child {
+    font-size: 16px;
+  }
+
+  .keyDataContainerElementTitle p:last-child {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 1025px) {
   .keyDataContainerElement {
     max-width: 100%;

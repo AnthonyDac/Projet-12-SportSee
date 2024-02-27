@@ -78,3 +78,9 @@ tspan {
   height: 10px;
   border-radius: 50%;
 }
+
+@media (max-width: 1025px) {
+  .barChartContainer {
+    padding: 5px;
+  }
+}

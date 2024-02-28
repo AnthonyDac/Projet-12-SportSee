@@ -73,7 +73,7 @@ function DashboardComponent() {
                         <div className="dashboardSquaresContainerElement">
                             <RadarchartComponent data={userPerformance} />
                         </div>
-                        <ScoreComponent dataScore={userData.score ? userData.score : userData.todayScore} />
+                        <ScoreComponent dataScore={userData.score ? userData.score : userData.todayScore} clockWise={true} />
                     </div>
                 </div>
                 <div className="keyDataContainer">

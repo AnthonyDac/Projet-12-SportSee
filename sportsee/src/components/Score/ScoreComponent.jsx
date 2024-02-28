@@ -6,7 +6,7 @@ import {
     RadialBar,
 } from 'recharts';
 
-function ScoreComponent({ dataScore }) {
+function ScoreComponent({ dataScore, clockWise }) {
 
     function calculatePercent(data) {
         const score = Number(data);
@@ -26,8 +26,8 @@ function ScoreComponent({ dataScore }) {
                         <span className="percent">{scorePercent}%</span><span className="text">de votre objectif</span>
                     </div>
                 </div>
-                <RadialBarChart width={260} height={260} cx="50%" cy="50%" innerRadius={90} outerRadius={170} barSize={8} data={[{ name: 'Score', value: scorePercent }]} startAngle={0} fill='#FF0000' endAngle={(360 * scorePercent) / 100}>
-                    <RadialBar minAngle={0} background clockWise={true} dataKey='value' fill='#FF0000' />
+                <RadialBarChart width={260} height={260} cx="50%" cy="50%" innerRadius={90} outerRadius={170} barSize={8} data={[{ name: 'Score', value: scorePercent }]} fill='#FF0000' startAngle={90} endAngle={clockWise ? (90 + (-360 * (scorePercent % 100) / 100)) : (90 + (360 * (scorePercent % 100) / 100))}>
+                    <RadialBar minAngle={0} background dataKey='value' fill='#FF0000' />
                 </RadialBarChart>
             </div>
         ) : (
